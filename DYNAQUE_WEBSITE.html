@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rowena M. Dynaque — Portfolio</title>
+  <meta name="description" content="Rowena M. Dynaque — Aspiring Web Developer | Single page portfolio" />
+  <style>
+    :root{
+      --bg:#f7f7f9; --card:#ffffff; --text:#111827; --muted:#6b7280; --accent:#2563eb; --glass: rgba(255,255,255,0.6);
+    }
+    [data-theme='dark']{ --bg:#0b1220; --card:#071226; --text:#e6eef8; --muted:#9aa7bb; --accent:#60a5fa; --glass: rgba(255,255,255,0.04);} 
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+
+    /* layout */
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:12px;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px;border-radius:12px;background:linear-gradient(180deg,var(--glass),transparent);backdrop-filter:blur(6px)}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    .nav-links a.active, .nav-links a:hover{color:var(--accent);background:transparent}
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{padding:8px 12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 10px}
+
+    section{padding:60px 0}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:center}
+    .intro h1{margin:0 0 8px;font-size:clamp(26px,4vw,40px)}
+    .tagline{color:var(--muted);margin-bottom:14px}
+    .bio{line-height:1.6;margin-bottom:18px}
+    .hero-card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 20px rgba(2,6,23,0.08)}
+    .photo{width:100%;height:360px;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#e6eef8,#fff)}
+    .quote{font-style:italic;color:var(--muted);margin-top:12px}
+
+    /* about */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .info-list{list-style:none;padding:0;margin:0}
+    .info-list li{padding:8px 0;border-bottom:1px dashed rgba(0,0,0,0.04);color:var(--muted)}
+
+    /* skills */
+    .skill{margin-bottom:14px}
+    .skill .label{display:flex;justify-content:space-between;font-weight:600;color:var(--muted);margin-bottom:6px}
+    .bar{height:10px;background:rgba(0,0,0,0.06);border-radius:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#a78bfa)}
+
+    /* projects */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+    .tags{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(0,0,0,0.04);color:var(--muted)}
+
+    /* contact */
+    form{display:grid;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text)}
+    textarea{min-height:120px}
+    .socials{display:flex;gap:10px}
+
+    footer{padding:20px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .photo{height:260px}
+      .grid-2{grid-template-columns:1fr}
+      header{padding:6px}
+    }
+
+    /* accessibility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <div class="container" id="top">
+    <header>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="brand">
+          <div class="logo">RD</div>
+          <div>
+            <div style="font-weight:700">Rowena M. Dynaque</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Aspiring Web Developer | IT Student</div>
+          </div>
+        </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="controls">
+          <button id="themeToggle" class="ghost" aria-pressed="false">🌙</button>
+          <button class="btn" onclick="document.location='#contact'">Hire Me</button>
+        </div>
+      </nav>
+    </header>
+
+    
+    <main>
+      <section id="home" class="hero">
+        <div>
+          <div class="intro">
+            <h1>Hi — I’m Rowena M. Dynaque</h1>
+            <div class="tagline">Aspiring Web Developer | IT Student</div>
+            <p class="bio">I build small responsive websites and enjoy learning about web technologies, networking, and cybersecurity. Browse my projects below and connect with me if you'd like to collaborate.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#projects">See Projects</a>
+              <a class="ghost" href="#about">About me</a>
+            </div>
+            <p class="quote">"Code is like humor. When you have to explain it, it’s bad." — A favorite quote</p>
+          </div>
+
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+            <div class="hero-card" style="flex:1;min-width:180px">
+              <strong>Location</strong>
+              <div style="color:var(--muted);margin-top:6px">Philippines</div>
+            </div>
+            <div class="hero-card" style="min-width:180px;">
+              <strong>Current focus</strong>
+              <div style="color:var(--muted);margin-top:6px">Web development, databases, and Linux</div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          
+          <img class="photo" src="C:\Users\User\Pictures\IMG_20250202_153642.jpg" alt="Photo of Rowena M. Dynaque" />
+
+          <div style="margin-top:12px;color:var(--muted);font-size:14px">What you'll find here: Projects, skills, contact details, and a clean single-page presentation of my work.</div>
+        </aside>
+      </section>
+
+      
+      <section id="about">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+          <div style="flex:1">
+            <h2>About Me</h2>
+            <p>I am currently an IT student focusing on web development and networking. I love problem-solving and I’m actively learning modern web technologies and collaborative workflows.</p>
+            <ul class="info-list" style="margin-top:12px">
+              <li><strong>Education:</strong> 2nd Year IT Student</li>
+              <li><strong>Technical Interests:</strong> Web Development, Databases, Networking, Cybersecurity</li>
+              <li><strong>Hobbies:</strong> Reading tech blogs, tinkering with Linux, creating small web projects also dancing</li>
+            </ul>
+          </div>
+          <div style="width:320px">
+            <div class="hero-card">
+              <strong>Quick facts</strong>
+              <div style="color:var(--muted);margin-top:8px">Team player, curious, and detail-oriented.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section id="skills">
+        <h2>Skills</h2>
+        <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start">
+          <div>
+            <div class="skill">
+              <div class="label"><span>HTML / CSS</span><span>85%</span></div>
+              <div class="bar"><i style="width:85%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>JavaScript</span><span>70%</span></div>
+              <div class="bar"><i style="width:70%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>Python</span><span>60%</span></div>
+              <div class="bar"><i style="width:60%"></i></div>
+            </div>
+            <div class="skill">
+              <div class="label"><span>SQL / Databases</span><span>65%</span></div>
+              <div class="bar"><i style="width:65%"></i></div>
+            </div>
+
+            <h3 style="margin-top:18px">Tools & Soft Skills</h3>
+            <div class="tags" style="margin-top:8px">
+              <span class="tag">Git</span>
+              <span class="tag">VSCode</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Docker (basic)</span>
+              <span class="tag">Teamwork</span>
+              <span class="tag">Problem-solving</span>
+            </div>
+          </div>
+
+          <aside>
+            <div class="hero-card">
+              <strong>Technical Areas</strong>
+              <div style="color:var(--muted);margin-top:8px">Web Development, Networking, Databases, Cybersecurity fundamentals</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff'/><text x='50%' y='50%' font-size='36' text-anchor='middle' fill='%236b7280'>Project Thumbnail</text></svg>" alt="Project thumbnail" />
+            <h3>Student Portal (Second-year)</h3>
+            <p style="color:var(--muted)">A simple student portal that allows users to view courses and resources. Built as a learning exercise for HTML/CSS and basic JavaScript interactivity.</p>
+            <div style="margin-top:10px" class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+            <div style="margin-top:10px;color:var(--muted);font-size:13px">Role: Frontend development, UI design</div>
+          </article>
+
+          <article class="card">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'><rect width='100%' height='100%' fill='%23fff'/><text x='50%' y='50%' font-size='36' text-anchor='middle' fill='%236b7280'>Project Thumbnail</text></svg>" alt="Project thumbnail" />
+            <h3>Library Inventory (Second-year)</h3>
+            <p style="color:var(--muted)">A small CRUD app prototype for managing books. Practiced database concepts and simple forms.</p>
+            <div style="margin-top:10px" class="tags"><span class="tag">Python</span><span class="tag">SQLite</span></div>
+            <div style="margin-top:10px;color:var(--muted);font-size:13px">Role: Backend prototype, database design</div>
+          </article>
+        </div>
+      </section>
+
+      
+      <section id="contact">
+        <h2>Contact</h2>
+        <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start">
+          <div>
+            <form id="contactForm">
+              <label class="sr-only" for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+
+              <label class="sr-only" for="email">Email</label>
+              <input id="email" name="email" placeholder="Your email" type="email" required />
+
+              <label class="sr-only" for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your message" required></textarea>
+
+              <button type="submit" class="btn">Send message</button>
+            </form>
+            <div id="formNote" style="color:var(--muted);margin-top:8px;font-size:13px">This form will open your email client (no backend). If you want a form handler, replace the JS with Formspree or Netlify forms.</div>
+          </div>
+
+          <aside>
+            <div class="hero-card">
+              <strong>Email</strong>
+              <div style="color:var(--muted);margin-top:8px">rowena.dynaque@example.com</div>
+              <div style="height:12px"></div>
+              <strong>Socials</strong>
+              <div class="socials" style="margin-top:8px">
+                <a class="tag" href="#" aria-label="
